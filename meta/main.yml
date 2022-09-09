@@ -1,5 +1,4 @@
 ---
-
 galaxy_info:
   role_name: prometheus_gluster_exporter
   description: install prometheus gluster_exporter and configure prometheus gluster_exporter
@@ -26,6 +25,5 @@ galaxy_info:
     - prometheus
     - gluster
     - exporter
-
 
 dependencies: []

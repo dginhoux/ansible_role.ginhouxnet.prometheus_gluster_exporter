@@ -1,5 +1,5 @@
 ---
-- name: 'restart {{ prometheus_gluster_exporter_name }}'
+- name: "restart {{ prometheus_gluster_exporter_name }}"
   service:
     name: "{{ prometheus_gluster_exporter_name }}"
     state: restarted
