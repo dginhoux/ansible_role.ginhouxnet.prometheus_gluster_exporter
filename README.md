@@ -1,7 +1,7 @@
 ginhouxnet.prometheus_gluster_exporter
 =========
 
-This ansible role install prometheus gluster exporter.
+This ansible role install, configure and uninstall prometheus gluster exporter.
 It can be deploy as binary downloaded from github OR as docker (no public image, you have to build an image and push to a registry)
 
 
@@ -23,6 +23,7 @@ Dependencies
 ------------
 
 none
+
 
 Example Playbook
 ----------------
