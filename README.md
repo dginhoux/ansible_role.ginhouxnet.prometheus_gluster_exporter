@@ -1,4 +1,4 @@
-ginhouxnet.prometheus_gluster_exporter
+Ansible Role : dginhoux.prometheus_gluster_exporter
 =========
 
 This ansible role install, configure and uninstall prometheus gluster exporter.
