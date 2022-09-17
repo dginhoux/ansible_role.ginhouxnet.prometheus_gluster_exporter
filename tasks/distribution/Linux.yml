@@ -1,13 +1,13 @@
 ---
 - name: "install {{ prometheus_gluster_exporter_name }}"
   block:
-    - include_tasks:
+    - ansible.builtin.include_tasks:
         file: tasks/sub-tasks/install_docker.yml
       when: deploy_gluster_exporter_mode is defined
         and
         deploy_gluster_exporter_mode == "docker"
 
-    - include_tasks:
+    - ansible.builtin.include_tasks:
         file: tasks/sub-tasks/install_binary.yml
       when: deploy_gluster_exporter_mode is defined
         and
@@ -28,13 +28,13 @@
 
 - name: "uninstall {{ prometheus_gluster_exporter_name }}"
   block:
-    - include_tasks:
+    - ansible.builtin.include_tasks:
         file: tasks/sub-tasks/uninstall_docker.yml
       when: deploy_gluster_exporter_mode is defined
         and
         deploy_gluster_exporter_mode == "docker"
 
-    - include_tasks:
+    - ansible.builtin.include_tasks:
         file: tasks/sub-tasks/uninstall_binary.yml
       when: deploy_gluster_exporter_mode is defined
         and
