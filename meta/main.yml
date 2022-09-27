@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: prometheus_gluster_exporter
-  description: install prometheus gluster_exporter and configure prometheus gluster_exporter
+  description: dginhoux.prometheus_gluster_exporter
   author: Dany GINHOUX
   company: dginhoux
   license: MIT
