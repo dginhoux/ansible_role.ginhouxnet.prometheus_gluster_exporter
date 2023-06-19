@@ -1,5 +1,1 @@
 ---
-- name: "restart {{ prometheus_gluster_exporter_name }}"
-  ansible.builtin.service:
-    name: "{{ prometheus_gluster_exporter_name }}"
-    state: restarted

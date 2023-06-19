@@ -1,45 +1,48 @@
 ---
-- name: "install {{ prometheus_gluster_exporter_name }}"
+- name: Install gluster_exporter
+  when:
+    - deploy_gluster_exporter is defined
+    - deploy_gluster_exporter == "install"
   block:
-    - ansible.builtin.include_tasks:
+    - name: Include tasks for docker install gluster_exporter
+      when:
+        - deploy_gluster_exporter_mode is defined
+        - deploy_gluster_exporter_mode == "docker"
+      ansible.builtin.include_tasks:
         file: tasks/sub-tasks/install_docker.yml
-      when: deploy_gluster_exporter_mode is defined
-        and
-        deploy_gluster_exporter_mode == "docker"
 
-    - ansible.builtin.include_tasks:
+    - name: Include tasks for binary install gluster_exporter
+      when:
+        - deploy_gluster_exporter_mode is defined
+        - deploy_gluster_exporter_mode == "binary"
+      ansible.builtin.include_tasks:
         file: tasks/sub-tasks/install_binary.yml
-      when: deploy_gluster_exporter_mode is defined
-        and
-        deploy_gluster_exporter_mode == "binary"
 
-    - name: "verify {{ prometheus_gluster_exporter_name }} is responding to requests"
-      uri:
-        url: http://127.0.0.1:{{ prometheus_gluster_exporter_port }}/
-        return_content: true
+    - name: Verify gluster_exporter is responding to requests
       register: metrics_output
       failed_when: "'Metrics' not in metrics_output.content"
       retries: 6
       delay: 60
+      ansible.builtin.uri:
+        url: http://127.0.0.1:{{ prometheus_gluster_exporter_port }}/
+        return_content: true
 
-  when: deploy_gluster_exporter is defined
-    and
-    deploy_gluster_exporter == "install"
 
-- name: "uninstall {{ prometheus_gluster_exporter_name }}"
+- name: Uninstall gluster_exporter
+  when:
+    - deploy_gluster_exporter is defined
+    - deploy_gluster_exporter == "uninstall"
   block:
-    - ansible.builtin.include_tasks:
+    - name: Include tasks for docker uninstall gluster_exporter
+      when:
+        - deploy_gluster_exporter_mode is defined
+        - deploy_gluster_exporter_mode == "docker"
+      ansible.builtin.include_tasks:
         file: tasks/sub-tasks/uninstall_docker.yml
-      when: deploy_gluster_exporter_mode is defined
-        and
-        deploy_gluster_exporter_mode == "docker"
 
-    - ansible.builtin.include_tasks:
+    - name: Include tasks for binary uninstall gluster_exporter
+      when:
+        - deploy_gluster_exporter_mode is defined
+        - deploy_gluster_exporter_mode == "binary"
+      ansible.builtin.include_tasks:
         file: tasks/sub-tasks/uninstall_binary.yml
-      when: deploy_gluster_exporter_mode is defined
-        and
-        deploy_gluster_exporter_mode == "binary"
-
-  when: deploy_gluster_exporter is defined
-    and
-    deploy_gluster_exporter == "uninstall"

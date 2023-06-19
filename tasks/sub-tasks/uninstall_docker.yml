@@ -1,12 +1,12 @@
 ---
-- name: stop gluster_exporter container
+- name: Stop gluster_exporter container
+  ignore_errors: true
   community.docker.docker_container:
     name: gluster_exporter
     state: stopped
-  ignore_errors: true
 
-- name: remove gluster_exporter container
+- name: Remove gluster_exporter container
+  ignore_errors: true
   community.docker.docker_container:
     name: gluster_exporter
     state: absent
-  ignore_errors: true

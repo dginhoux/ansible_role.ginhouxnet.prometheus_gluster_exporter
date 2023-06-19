@@ -3,14 +3,14 @@ deploy_gluster_exporter: install
 deploy_gluster_exporter_mode: binary
 prometheus_gluster_exporter_docker_image: "" ## prom/gluster-exporter
 prometheus_gluster_exporter_name: gluster_exporter
-prometheus_gluster_exporter_version: 0.2.7
+prometheus_gluster_exporter_version: "0.2.7"
 prometheus_gluster_exporter_arch: amd64
 prometheus_gluster_exporter_download_url: >-
   "https://github.com/ofesseler/gluster_exporter/releases/download/
   v{{ prometheus_gluster_exporter_version }}/
   gluster_exporter-{{ prometheus_gluster_exporter_version }}.
   linux-{{ prometheus_gluster_exporter_arch }}.tar.gz"
-prometheus_gluster_exporter_bin_path: /usr/local/bin/{{prometheus_gluster_exporter_name}}
+prometheus_gluster_exporter_bin_path: /usr/local/bin/{{ prometheus_gluster_exporter_name }}
 prometheus_gluster_exporter_options: >-
   -listen-address :9189
   -metrics-path /metrics
