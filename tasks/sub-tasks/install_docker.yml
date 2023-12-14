@@ -1,5 +1,6 @@
 ---
 - name: Start gluster_exporter container
+  become: true
   community.docker.docker_container:
     name: gluster_exporter
     state: started
